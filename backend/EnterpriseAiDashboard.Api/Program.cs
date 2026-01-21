@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
         policy =>
             policy.WithOrigins(
                 "http://localhost:4200",  // Development
-                "https://enterprise-dashboard-frontend.onrender.com"  // Production (update with your actual URL)
+                "https://enterprise-dashboard-frontend-lsjr.onrender.com"  // Production
             )
             .AllowAnyHeader()                       // Allow all headers
             .AllowAnyMethod());                     // Allow GET, POST, etc.
