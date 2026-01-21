@@ -31,7 +31,7 @@ export class ApiService {
   private getApiUrl(): string {
     // Check if we're running on Render (production)
     if (typeof window !== 'undefined' && window.location.hostname.includes('onrender.com')) {
-      return 'https://enterprise-dashboard-api.onrender.com/api';
+      return 'https://enterprise-dashboard-api-lsjr.onrender.com/api';
     }
     // Otherwise use environment config
     return environment.apiUrl;
