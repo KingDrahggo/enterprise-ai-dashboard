@@ -37,11 +37,11 @@ namespace EnterpriseAiDashboard.Api.Controllers
                 Activities = new List<RecentActivity>
                 {
                     // Recent activity log entries
-                    // Timestamps use ISO 8601 format for consistency
-                    new() { Action = "AI Model Retraining Started", User = "System", Timestamp = DateTime.UtcNow.AddMinutes(-5).ToString("o") },
-                    new() { Action = "User Login Failed", User = "admin_smith", Timestamp = DateTime.UtcNow.AddMinutes(-12).ToString("o") },
-                    new() { Action = "New Data Source Connected", User = "data_engineer", Timestamp = DateTime.UtcNow.AddMinutes(-23).ToString("o") },
-                    new() { Action = "Report Generated", User = "System", Timestamp = DateTime.UtcNow.AddMinutes(-45).ToString("o") }
+                    // Timestamps use DateTime for proper serialization
+                    new() { Action = "AI Model Retraining Started", User = "System", Timestamp = DateTime.UtcNow.AddMinutes(-5) },
+                    new() { Action = "User Login Failed", User = "admin_smith", Timestamp = DateTime.UtcNow.AddMinutes(-12) },
+                    new() { Action = "New Data Source Connected", User = "data_engineer", Timestamp = DateTime.UtcNow.AddMinutes(-23) },
+                    new() { Action = "Report Generated", User = "System", Timestamp = DateTime.UtcNow.AddMinutes(-45) }
                 }
             };
 

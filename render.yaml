@@ -17,8 +17,8 @@ services:
     name: enterprise-dashboard-frontend
     runtime: node
     plan: free
-    buildCommand: cd frontend/enterprise-ai-dashboard-ui && npm install && npm run build -- --configuration production
+    buildCommand: cd frontend/enterprise-ai-dashboard-ui && npm install --legacy-peer-deps && npm run build -- --configuration production
     startCommand: cd frontend/enterprise-ai-dashboard-ui && npx http-server dist/enterprise-ai-dashboard-ui/browser -p $PORT --proxy http://localhost:$PORT?
     envVars:
       - key: NODE_VERSION
-        value: 18
+        value: 20

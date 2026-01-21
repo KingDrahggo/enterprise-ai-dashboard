@@ -10,9 +10,9 @@ namespace EnterpriseAiDashboard.Api.Models
 
     public class RecentActivity
     {
-        public string Id { get; set; } = string.Empty;
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Action { get; set; } = string.Empty;
-        public DateTime Timestamp { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
         public string User { get; set; } = string.Empty;
     }
 
