@@ -37,8 +37,6 @@ export class ApiService {
     return environment.apiUrl;
   }
 
-  constructor(private http: HttpClient) { }
-
   /**
    * Generic GET request
    * @param endpoint API endpoint (e.g., 'dashboard')
