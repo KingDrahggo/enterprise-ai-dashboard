@@ -2,11 +2,9 @@ services:
   # Backend .NET API
   - type: web
     name: enterprise-dashboard-api
-    runtime: dotnet
-    region: oregon
+    runtime: docker
     plan: free
-    buildCommand: dotnet publish -c Release -o out backend/EnterpriseAiDashboard.Api/EnterpriseAiDashboard.Api.csproj
-    startCommand: dotnet out/EnterpriseAiDashboard.Api.dll
+    dockerfilePath: ./backend/Dockerfile
     envVars:
       - key: ASPNETCORE_URLS
         value: http://0.0.0.0:$PORT
@@ -15,11 +13,8 @@ services:
     healthCheckPath: /api/dashboard
 
   # Frontend Angular App
-  - type: web
+  - type: static
     name: enterprise-dashboard-frontend
-    runtime: static
-    region: oregon
-    plan: free
     buildCommand: cd frontend/enterprise-ai-dashboard-ui && npm install && npm run build -- --configuration production
     staticPublishPath: frontend/enterprise-ai-dashboard-ui/dist/enterprise-ai-dashboard-ui/browser
     routes:
