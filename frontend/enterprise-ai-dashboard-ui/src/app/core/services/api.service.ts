@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 /**
  * Generic API Service
@@ -21,8 +22,8 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   // Base URL for all API calls
-  // In production, this would come from environment config
-  private baseUrl = 'http://localhost:5259/api';
+  // Uses environment configuration for dev/prod switching
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 

@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3000/api'
+  // This will be updated after you get your Render backend URL
+  // Format: https://enterprise-dashboard-api.onrender.com/api
+  apiUrl: 'https://enterprise-dashboard-api.onrender.com/api'
 };

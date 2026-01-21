@@ -15,15 +15,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // CORS Configuration
-// Allows Angular frontend (localhost:4200) to make requests
+// Allows Angular frontend to make requests from both dev and production
 // Without this, browsers will block cross-origin requests
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular",
         policy =>
-            policy.WithOrigins("http://localhost:4200")  // Angular dev server
-                  .AllowAnyHeader()                       // Allow all headers
-                  .AllowAnyMethod());                     // Allow GET, POST, etc.
+            policy.WithOrigins(
+                "http://localhost:4200",  // Development
+                "https://enterprise-dashboard-frontend.onrender.com"  // Production (update with your actual URL)
+            )
+            .AllowAnyHeader()                       // Allow all headers
+            .AllowAnyMethod());                     // Allow GET, POST, etc.
 });
 
 // Build the application
