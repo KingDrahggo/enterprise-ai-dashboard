@@ -1,0 +1,15 @@
+<div class="card stat-card" [style.border-color]="glowColor">
+    <div class="header">
+        <span class="title">{{ title }}</span>
+        <i class="icon" [class]="icon"></i> <!-- Placeholder for icon lib -->
+    </div>
+    <div class="value-container">
+        <h2 class="value neon-text" [style.color]="glowColor" [style.text-shadow]="'0 0 10px ' + glowColor">{{ value }}</h2>
+    </div>
+    <div class="footer" *ngIf="trend !== 0">
+        <span class="trend" [style.color]="trendColor">
+            {{ trend > 0 ? '▲' : '▼' }} {{ trend | number }}%
+        </span>
+        <span class="label">vs last week</span>
+    </div>
+</div>

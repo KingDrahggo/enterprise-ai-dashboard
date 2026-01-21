@@ -1,0 +1,44 @@
+<div class="layout-wrapper" [class.collapsed]="isSidebarCollapsed">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <div class="logo-icon">AI</div>
+            <span class="logo-text" *ngIf="!isSidebarCollapsed">NEXUS</span>
+        </div>
+        
+        <nav class="nav-links">
+            <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">
+                <i class="icon pi pi-home"></i>
+                <span class="label" *ngIf="!isSidebarCollapsed">Dashboard</span>
+            </a>
+            <a routerLink="/analytics" routerLinkActive="active" class="nav-item">
+                <i class="icon pi pi-chart-line"></i>
+                <span class="label" *ngIf="!isSidebarCollapsed">Analytics</span>
+            </a>
+            <a routerLink="/users" routerLinkActive="active" class="nav-item">
+                <i class="icon pi pi-users"></i>
+                <span class="label" *ngIf="!isSidebarCollapsed">Users</span>
+            </a>
+            <a class="nav-item mt-auto">
+                <i class="icon pi pi-cog"></i>
+                <span class="label" *ngIf="!isSidebarCollapsed">Settings</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-area">
+        <header class="topbar">
+            <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+            <h1 class="page-title">ENTERPRISE CONTROL PANEL</h1>
+            <div class="user-profile">
+                <span class="user-name">Admin</span>
+                <div class="avatar">AD</div>
+            </div>
+        </header>
+
+        <main class="content-view">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

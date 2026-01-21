@@ -1,0 +1,83 @@
+<div class="dashboard-container" *ngIf="dashboardData$ | async as data; else loading">
+    
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+        <app-stat-card 
+            title="Total Users" 
+            [value]="data.stats.totalUsers | number" 
+            [trend]="12.5" 
+            icon="pi pi-users" 
+            glowColor="var(--primary-glow)">
+        </app-stat-card>
+        
+        <app-stat-card 
+            title="Active Sessions" 
+            [value]="data.stats.activeSessions" 
+            [trend]="-2.1" 
+            icon="pi pi-bolt" 
+            glowColor="var(--secondary-glow)">
+        </app-stat-card>
+
+        <app-stat-card 
+            title="AI Utilization" 
+            [value]="data.stats.aiUtilizationRate + '%'" 
+            [trend]="5.4" 
+            icon="pi pi-microchip" 
+            glowColor="var(--accent-glow)">
+        </app-stat-card>
+
+        <app-stat-card 
+            title="Security Alerts" 
+            [value]="data.stats.alertsTriggered" 
+            [trend]="0" 
+            icon="pi pi-shield" 
+            glowColor="var(--danger-glow)">
+        </app-stat-card>
+    </div>
+
+    <!-- Main Content Split -->
+    <div class="main-content">
+        <div class="left-panel">
+            <div class="card recent-activity">
+                <h3 class="section-title">LIVE SYSTEM ACTIVITY</h3>
+                <div class="activity-list">
+                    @for (activity of data.activities; track activity.id) {
+                        <div class="activity-item">
+                            <div class="status-dot"></div>
+                            <div class="details">
+                                <span class="action">{{ activity.action }}</span>
+                                <span class="meta">{{ activity.user }} • {{ activity.timestamp | date:'mediumTime' }}</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            
+            <!-- Placeholder for Chart -->
+            <div class="card chart-panel">
+                <h3 class="section-title">RESOURCE FORECAST</h3>
+                <div class="mock-chart">
+                    <!-- Simple CSS based bars for visual effect -->
+                    <div class="bar" style="height: 40%"></div>
+                    <div class="bar" style="height: 60%"></div>
+                    <div class="bar" style="height: 45%"></div>
+                    <div class="bar" style="height: 80%"></div>
+                    <div class="bar" style="height: 75%"></div>
+                    <div class="bar" style="height: 90%"></div>
+                    <div class="bar neon" style="height: 95%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <app-ai-assistant></app-ai-assistant>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #loading>
+    <div class="loading-state">
+        <h2 class="neon-text-blue">INITIALIZING SYSTEM...</h2>
+    </div>
+</ng-template>
