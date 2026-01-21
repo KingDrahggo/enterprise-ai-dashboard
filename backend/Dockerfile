@@ -3,11 +3,11 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # Copy csproj and restore dependencies
-COPY EnterpriseAiDashboard.Api/*.csproj ./
+COPY EnterpriseAiDashboard.Api/EnterpriseAiDashboard.Api.csproj ./
 RUN dotnet restore
 
 # Copy everything else and build
-COPY EnterpriseAiDashboard.Api/. ./
+COPY EnterpriseAiDashboard.Api/ ./
 RUN dotnet publish -c Release -o out
 
 # Use runtime image for final stage
