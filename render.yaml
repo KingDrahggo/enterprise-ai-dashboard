@@ -13,11 +13,12 @@ services:
     healthCheckPath: /api/dashboard
 
   # Frontend Angular App
-  - type: static
+  - type: web
     name: enterprise-dashboard-frontend
+    runtime: node
+    plan: free
     buildCommand: cd frontend/enterprise-ai-dashboard-ui && npm install && npm run build -- --configuration production
-    staticPublishPath: frontend/enterprise-ai-dashboard-ui/dist/enterprise-ai-dashboard-ui/browser
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    startCommand: cd frontend/enterprise-ai-dashboard-ui && npx http-server dist/enterprise-ai-dashboard-ui/browser -p $PORT --proxy http://localhost:$PORT?
+    envVars:
+      - key: NODE_VERSION
+        value: 18
