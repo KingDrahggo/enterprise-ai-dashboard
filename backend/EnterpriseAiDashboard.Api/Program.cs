@@ -1,5 +1,6 @@
 // Minimal API setup using top-level statements (C# 10+)
 // No need for Main method or Program class
+// Updated for Render deployment
 var builder = WebApplication.CreateBuilder(args);
 
 // ===== SERVICE REGISTRATION =====
