@@ -23,7 +23,19 @@ import { environment } from '../../../environments/environment';
 export class ApiService {
   // Base URL for all API calls
   // Uses environment configuration for dev/prod switching
-  private baseUrl = environment.apiUrl;
+  // Fallback: if running on Render, use production URL
+  private baseUrl = this.getApiUrl();
+
+  constructor(private http: HttpClient) { }
+
+  private getApiUrl(): string {
+    // Check if we're running on Render (production)
+    if (typeof window !== 'undefined' && window.location.hostname.includes('onrender.com')) {
+      return 'https://enterprise-dashboard-api.onrender.com/api';
+    }
+    // Otherwise use environment config
+    return environment.apiUrl;
+  }
 
   constructor(private http: HttpClient) { }
 
